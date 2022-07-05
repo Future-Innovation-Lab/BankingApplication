@@ -19,5 +19,22 @@ namespace BankingAppWebApi.Data
 
             return customer;
         }
+        
+        public bool DoesCustomerExistById(int id)
+        {
+            return _bankingContext.Customers.Any(cust => cust.CustomerId == id);
+        }
+
+        public bool DoesCustomerExistBySaIdNumber(string idNumber)
+        {
+            return _bankingContext.Customers.Any(cust => cust.IdNumber == idNumber);
+        }
+
+        public bool DoesCustomerExistByEmailAddress(string email)
+        {
+            return _bankingContext.Customers.Any(cust => cust.EmailAddress == email);
+        }
+
+
     }
 }

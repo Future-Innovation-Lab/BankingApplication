@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAppWebApi.Migrations
 {
     [DbContext(typeof(BankingContext))]
-    [Migration("20220705032608_migrationv1")]
+    [Migration("20220705051650_migrationv1")]
     partial class migrationv1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -23,7 +23,7 @@ namespace BankingAppWebApi.Models
 
         public Authentication? Authentication { get; set; }
 
-        public ICollection<BankAccount> BankAccounts { get; set; }
+        public ICollection<BankAccount>? BankAccounts { get; set; }
 
     }
 }
