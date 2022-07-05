@@ -58,7 +58,7 @@ namespace BankingAppWebApi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BankAccountId"), 1L, 1);
 
                     b.Property<decimal>("AccountBalance")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<string>("AccountNumber")
                         .IsRequired()
@@ -147,7 +147,7 @@ namespace BankingAppWebApi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"), 1L, 1);
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("BankAccountId")
                         .HasColumnType("int");

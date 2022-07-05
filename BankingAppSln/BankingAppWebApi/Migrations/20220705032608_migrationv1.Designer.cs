@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAppWebApi.Migrations
 {
     [DbContext(typeof(BankingContext))]
-    [Migration("20220705030221_migrationv1")]
+    [Migration("20220705032608_migrationv1")]
     partial class migrationv1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,7 +60,7 @@ namespace BankingAppWebApi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BankAccountId"), 1L, 1);
 
                     b.Property<decimal>("AccountBalance")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<string>("AccountNumber")
                         .IsRequired()
@@ -149,7 +149,7 @@ namespace BankingAppWebApi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"), 1L, 1);
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("BankAccountId")
                         .HasColumnType("int");

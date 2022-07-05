@@ -23,7 +23,7 @@ namespace BankingAppWebApi.Models
 
         public string Reference { get; set; }
 
-        [Column(TypeName = "decimal(5, 2)")]
+        [Column(TypeName = "decimal(10, 2)")]
         public decimal Amount { get; set; }
 
         [ForeignKey("BankAccount")]

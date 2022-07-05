@@ -25,7 +25,7 @@ namespace BankingAppWebApi.Models
 
         public string AccountNumber { get; set; }
 
-        [Column(TypeName = "decimal(5, 2)")]
+        [Column(TypeName = "decimal(10, 2)")]
         public decimal AccountBalance { get; set; }
 
         public ICollection<Transaction> Transactions { get; set; }

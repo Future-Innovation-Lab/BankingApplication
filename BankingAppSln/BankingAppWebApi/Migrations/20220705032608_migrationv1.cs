@@ -85,7 +85,7 @@ namespace BankingAppWebApi.Migrations
                     BankAccountTypeId = table.Column<int>(type: "int", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AccountBalance = table.Column<decimal>(type: "decimal(5,2)", nullable: false)
+                    AccountBalance = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,7 +114,7 @@ namespace BankingAppWebApi.Migrations
                     TransactionTypeId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Reference = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     BankAccountId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
