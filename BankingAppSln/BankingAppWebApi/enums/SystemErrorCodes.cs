@@ -2,9 +2,11 @@
 {
     public enum SystemErrorCodes
     {
-            CustomerNotValid,
-            CustomerDuplicate,
-            CustomerCreationFailed,
-            AuthenticationFailed
+        CustomerNotValid,
+        CustomerDuplicate,
+        CustomerCreationFailed,
+        AuthenticationFailed,
+        BankAccountNotValid,
+        BankAccountCreationFailed
     }
 }

@@ -120,9 +120,28 @@ namespace BankingAppWebApi.Data
         #endregion
 
 
-        #region Authentication
+        #region BankAccount
 
-        public bool PerformAuthenticationCheck(string userName, string pin)
+        public BankAccount CreateNewBankAccount(BankAccount bankAccount)
+        {
+            _bankingContext.BankAccounts.Add(bankAccount);
+            _bankingContext.SaveChanges();
+            
+            return bankAccount;
+        }
+
+
+        public IList<BankAccount> GetBankAccountsByCustomerId(int customerId)
+        {
+            var accounts = _bankingContext.BankAccounts.Where(x => x.CustomerId == customerId).ToList();
+            return accounts;
+
+        }
+            #endregion
+
+            #region Authentication
+
+            public bool PerformAuthenticationCheck(string userName, string pin)
         {
             var user = _bankingContext.Authentications.Where(u => u.EmailAddress == userName && u.Pin == pin).FirstOrDefault();
 
