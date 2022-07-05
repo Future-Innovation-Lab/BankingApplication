@@ -7,6 +7,8 @@
         CustomerCreationFailed,
         AuthenticationFailed,
         BankAccountNotValid,
-        BankAccountCreationFailed
+        BankAccountCreationFailed,
+        BankAccountNotValidForTransaction,
+        InsufficientFundsForTransaction
     }
 }

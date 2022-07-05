@@ -1,4 +1,5 @@
-﻿using BankingAppWebApi.Interfaces;
+﻿using BankingAppWebApi.enums;
+using BankingAppWebApi.Interfaces;
 using BankingAppWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -153,10 +154,43 @@ namespace BankingAppWebApi.Data
 
         public Transaction CreateNewTransaction(Transaction transaction)
         {
-            _bankingContext.Transactions.Add(transaction);
-            _bankingContext.SaveChanges();
+            using (var dbTransaction = _bankingContext.Database.BeginTransaction())
+            {
 
-            return transaction;
+
+                try
+                {
+
+                    var bankAccount = _bankingContext.BankAccounts.Where(x => x.BankAccountId == transaction.BankAccountId).FirstOrDefault();
+
+                    if (bankAccount != null)
+                    {
+
+                        if (transaction.TransactionTypeId == (int)TransactionTypeEnum.Deposit)
+                        {
+                            bankAccount.AccountBalance += transaction.Amount;
+                        }
+                        else if (transaction.TransactionTypeId == (int)TransactionTypeEnum.Withdrawal)
+                        {
+                            bankAccount.AccountBalance -= transaction.Amount;
+                        }
+
+                        _bankingContext.BankAccounts.Update(bankAccount);
+                        _bankingContext.Transactions.Add(transaction);
+                        _bankingContext.SaveChanges();
+
+                        dbTransaction.Commit();
+                    }
+                }
+                catch (Exception)
+                {
+                    dbTransaction.Rollback();
+                }
+
+
+
+                return transaction;
+            }
         }
 
 

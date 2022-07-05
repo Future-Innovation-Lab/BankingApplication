@@ -21,5 +21,6 @@ namespace BankingAppWebApi.Interfaces
         IList<Transaction> GetTransactionsByBankAccountIdAndDate(int bankAccountId, DateTime startDate, DateTime endDate);
         Transaction GetTransactionById(int transactionId);
         bool PerformAuthenticationCheck(string userName, string pin);
+        
     }
 }
