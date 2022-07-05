@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAppWebApi.Migrations
 {
     [DbContext(typeof(BankingContext))]
-    [Migration("20220705051650_migrationv1")]
+    [Migration("20220705054416_migrationv1")]
     partial class migrationv1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace BankingAppWebApi.Migrations
 
                     b.HasKey("AuthenticationId");
 
-                    b.ToTable("Authentications");
+                    b.ToTable("Authentication");
                 });
 
             modelBuilder.Entity("BankingAppWebApi.Models.BankAccount", b =>
@@ -78,7 +78,7 @@ namespace BankingAppWebApi.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("BankAccounts");
+                    b.ToTable("BankAccount");
                 });
 
             modelBuilder.Entity("BankingAppWebApi.Models.BankAccountType", b =>
@@ -95,7 +95,7 @@ namespace BankingAppWebApi.Migrations
 
                     b.HasKey("BankAccountTypeId");
 
-                    b.ToTable("BankAccountTypes");
+                    b.ToTable("BankAccountType");
                 });
 
             modelBuilder.Entity("BankingAppWebApi.Models.Customer", b =>
@@ -174,7 +174,7 @@ namespace BankingAppWebApi.Migrations
 
                     b.HasIndex("TransactionTypeId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transaction");
                 });
 
             modelBuilder.Entity("BankingAppWebApi.Models.TransactionType", b =>
@@ -191,7 +191,7 @@ namespace BankingAppWebApi.Migrations
 
                     b.HasKey("TransactionTypeId");
 
-                    b.ToTable("TransactionTypes");
+                    b.ToTable("TransactionType");
                 });
 
             modelBuilder.Entity("BankingAppWebApi.Models.BankAccount", b =>

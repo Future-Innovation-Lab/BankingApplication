@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BankingAppWebApi.Models
 {
+
+    [Table("TransactionType")]
     public class TransactionType
     {
         [Required]

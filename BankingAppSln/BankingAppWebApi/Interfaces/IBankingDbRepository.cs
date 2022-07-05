@@ -8,5 +8,6 @@ namespace BankingAppWebApi.Interfaces
         bool DoesCustomerExistByEmailAddress(string email);
         bool DoesCustomerExistById(int id);
         bool DoesCustomerExistBySaIdNumber(string idNumber);
+        bool PerformAuthenticationCheck(string userName, string pin);
     }
 }

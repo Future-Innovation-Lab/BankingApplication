@@ -35,6 +35,17 @@ namespace BankingAppWebApi.Data
             return _bankingContext.Customers.Any(cust => cust.EmailAddress == email);
         }
 
+        public bool PerformAuthenticationCheck(string userName, string pin)
+        {
+            var user = _bankingContext.Authentications.Where(u => u.EmailAddress == userName && u.Pin == pin).FirstOrDefault();
+
+            if (user != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }
