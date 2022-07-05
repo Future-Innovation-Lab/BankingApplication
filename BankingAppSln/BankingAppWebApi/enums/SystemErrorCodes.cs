@@ -4,6 +4,7 @@
     {
             CustomerNotValid,
             CustomerDuplicate,
-            CustomerCreationFailed
+            CustomerCreationFailed,
+            AuthenticationFailed
     }
 }
