@@ -9,7 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingAppMobile.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingAppMobile.iOS", "BankingAppMobile\BankingAppMobile.iOS\BankingAppMobile.iOS.csproj", "{B8D1B08E-9B04-444F-96C6-2A6F78D3971D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingAppWebApi", "BankingAppWebApi\BankingAppWebApi.csproj", "{133C6DB8-D2C0-48F0-BF24-E3768B80E32D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingAppWebApi", "BankingAppWebApi\BankingAppWebApi.csproj", "{133C6DB8-D2C0-48F0-BF24-E3768B80E32D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{F2CD490F-8202-4299-823D-3DB118201B92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F752026C-4013-4632-A6EF-CEEC5C1981E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{B8997B30-7987-4FF5-A3E8-E1F38642F137}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,6 +144,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D9BB637-0C66-41E0-ADF7-EDF7A86C4694} = {F2CD490F-8202-4299-823D-3DB118201B92}
+		{82DF88DF-493A-43BA-88FD-30041F9F3774} = {F2CD490F-8202-4299-823D-3DB118201B92}
+		{B8D1B08E-9B04-444F-96C6-2A6F78D3971D} = {F2CD490F-8202-4299-823D-3DB118201B92}
+		{133C6DB8-D2C0-48F0-BF24-E3768B80E32D} = {B8997B30-7987-4FF5-A3E8-E1F38642F137}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F05B15C-10A3-4811-804C-5DE362CAD706}
