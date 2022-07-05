@@ -137,11 +137,58 @@ namespace BankingAppWebApi.Data
             return accounts;
 
         }
-            #endregion
+        
+        public BankAccount GetBankAccountById(int bankAccountId)
+        {
+            var account = _bankingContext.BankAccounts.Where(x => x.BankAccountId == bankAccountId).FirstOrDefault();
+            return account;
 
-            #region Authentication
+        }
 
-            public bool PerformAuthenticationCheck(string userName, string pin)
+
+        #endregion
+
+
+        #region Transaction
+
+        public Transaction CreateNewTransaction(Transaction transaction)
+        {
+            _bankingContext.Transactions.Add(transaction);
+            _bankingContext.SaveChanges();
+
+            return transaction;
+        }
+
+
+        public IList<Transaction> GetTransactionsByBankAccountId(int bankAccountId)
+        {
+            var transactions = _bankingContext.Transactions.Where(x => x.BankAccountId == bankAccountId).ToList();
+            return transactions;
+            
+        }
+
+        public Transaction GetTransactionById(int transactionId)
+        {
+            var transaction = _bankingContext.Transactions.Where(x => x.TransactionId == transactionId).FirstOrDefault();
+            return transaction;
+            
+        }
+
+        public IList<Transaction> GetTransactionsByBankAccountIdAndDate(int bankAccountId, DateTime startDate, DateTime endDate)
+        {
+            var transactions = _bankingContext.Transactions.Where(x => (x.BankAccountId == bankAccountId) && (x.TransactionDate >= startDate && x.TransactionDate <= endDate)).ToList();
+            return transactions;
+
+        }
+
+
+        #endregion
+
+
+
+        #region Authentication
+
+        public bool PerformAuthenticationCheck(string userName, string pin)
         {
             var user = _bankingContext.Authentications.Where(u => u.EmailAddress == userName && u.Pin == pin).FirstOrDefault();
 
