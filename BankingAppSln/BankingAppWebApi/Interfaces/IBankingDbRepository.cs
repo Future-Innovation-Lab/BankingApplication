@@ -8,6 +8,10 @@ namespace BankingAppWebApi.Interfaces
         bool DoesCustomerExistByEmailAddress(string email);
         bool DoesCustomerExistById(int id);
         bool DoesCustomerExistBySaIdNumber(string idNumber);
+        List<Customer> GetAllCustomers(bool fullFetch = true);
+        Customer GetCustomerByEmail(string email, bool fullFetch = true);
+        Customer GetCustomerById(int id, bool fullFetch=true);
+        Customer GetCustomerBySaIdNumber(string idNumber, bool fullFetch = true);
         bool PerformAuthenticationCheck(string userName, string pin);
     }
 }
