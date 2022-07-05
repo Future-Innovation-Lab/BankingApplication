@@ -19,7 +19,7 @@ namespace BankingAppWebApi.Data
         public DbSet<BankAccountType> BankAccountTypes { get; set; }
         public DbSet<Authentication> Authentications { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-
+        public DbSet<TransactionType> TransactionTypes { get; set; }
 
     }
 }

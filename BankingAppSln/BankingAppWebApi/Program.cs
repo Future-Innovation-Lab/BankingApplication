@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+// Adds DB Context for Entity Framework
 builder.Services.AddDbContext<BankingContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BankingConnectionString")));
 
 builder.Services.AddControllers();
@@ -13,7 +15,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Adds Banking Repository to DI container
 builder.Services.AddScoped<IBankingDbRepository, BankingDbRepository>();
+
+// Addss DbInitialiser to DI Container
+builder.Services.AddTransient<DbInitialiser>();
 
 var app = builder.Build();
 
@@ -29,5 +35,18 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+// Seed Database with information
+using var scope = app.Services.CreateScope();
+
+var services = scope.ServiceProvider;
+
+var initialiser = services.GetRequiredService<DbInitialiser>();
+
+initialiser.Run();
+
+//  End Seed Database
+
 
 app.Run();
