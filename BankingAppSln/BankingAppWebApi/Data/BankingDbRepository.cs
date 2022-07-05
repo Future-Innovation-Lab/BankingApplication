@@ -73,12 +73,12 @@ namespace BankingAppWebApi.Data
         {
             if (fullFetch)
             {
-                var customer = _bankingContext.Customers.Where(x => x.Surname == surname).Include(x => x.BankAccounts).FirstOrDefault();
+                var customer = _bankingContext.Customers.Where(x => x.Surname.Contains(surname)).Include(x => x.BankAccounts).FirstOrDefault();
                 return customer;
             }
             else
             {
-                var customer = _bankingContext.Customers.Where(x => x.Surname == surname).FirstOrDefault();
+                var customer = _bankingContext.Customers.Where(x => x.Surname.Contains(surname)).FirstOrDefault();
                 return customer;
 
             }

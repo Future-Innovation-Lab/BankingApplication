@@ -40,7 +40,25 @@ namespace BankingAppWebApi.Controllers
             }
             return Ok(customer);
         }
-   
+
+        [HttpGet]
+        public IEnumerable<Customer> Get()
+        {
+            return _bankingDbRepository.GetAllCustomers();
+        }
+
+        // GET api/<CustomerController>/5
+        [HttpGet("byid")]
+        public Customer Get([FromQuery] int id)
+        {
+            return _bankingDbRepository.GetCustomerById(id);
+        }
+
+        [HttpGet("search")]
+        public Customer Get([FromQuery] string lastName)
+        {
+            return _bankingDbRepository.GetCustomerByLastName(lastName);
+        }
 
     }
 }
