@@ -1,4 +1,4 @@
-﻿namespace BankingAppWebApi.Models
+﻿namespace BankingShared.Models
 {
 
     // TODO Add Security as this pin is in CLEARTEXT

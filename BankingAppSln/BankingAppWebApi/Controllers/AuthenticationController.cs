@@ -1,7 +1,6 @@
 ﻿using BankingAppWebApi.enums;
 using BankingAppWebApi.Interfaces;
-using BankingAppWebApi.Models;
-using Microsoft.AspNetCore.Http;
+using BankingShared.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankingAppWebApi.Controllers

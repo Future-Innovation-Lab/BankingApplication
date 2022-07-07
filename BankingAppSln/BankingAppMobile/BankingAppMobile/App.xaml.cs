@@ -1,3 +1,5 @@
+using BankingAppMobile.Services;
+using BankingAppMobile.Services.Interfaces;
 using BankingAppMobile.ViewModels;
 using BankingAppMobile.Views;
 using Prism;
@@ -19,15 +21,19 @@ namespace BankingAppMobile
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/ServiceTestPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+            containerRegistry.Register<IAuthentication, AuthenticationService> ();
+
+            containerRegistry.Register<IAppConfiguration, AppConfigurationService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-         }
+            containerRegistry.RegisterForNavigation<ServiceTestPage, ServiceTestPageViewModel>();
+        }
     }
 }
