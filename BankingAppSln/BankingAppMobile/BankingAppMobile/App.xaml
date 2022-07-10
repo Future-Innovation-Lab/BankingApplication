@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             x:Class="BankingAppMobile.App">
-  <Application.Resources>
+             xmlns:prism="http://prismlibrary.com" 
+             xmlns:converters="clr-namespace:BankingAppMobile.Converters"
+             xmlns:styles="clr-namespace:BankingAppMobile.Styles"
+                        x:Class="BankingAppMobile.App">
 
-    <!-- Application resource dictionary -->
+        <prism:PrismApplication.Resources>
+            <ResourceDictionary>
+                <converters:DoneIconConverter x:Key="DoneIconConverter"/>
+                <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"/>
 
-  </Application.Resources>
+                <ResourceDictionary.MergedDictionaries>
+                    <styles:Theme></styles:Theme>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </prism:PrismApplication.Resources>
 </prism:PrismApplication>

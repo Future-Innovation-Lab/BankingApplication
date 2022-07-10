@@ -13,7 +13,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\**" />
+    <EmbeddedResource Remove="Controls\**" />
+    <None Remove="Controls\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Fonts\FontAwesome-Regular.ttf" />
+    <None Remove="Fonts\FontAwesome-Solid.ttf" />
+    <None Remove="Fonts\Mulish-Black.ttf" />
+    <None Remove="Fonts\Mulish-Bold.ttf" />
+    <None Remove="Fonts\Mulish-ExtraBold.ttf" />
+    <None Remove="Fonts\Mulish-ExtraLight.ttf" />
+    <None Remove="Fonts\Mulish-Light.ttf" />
+    <None Remove="Fonts\Mulish-Medium.ttf" />
+    <None Remove="Fonts\Mulish-Regular.ttf" />
+    <None Remove="Fonts\Mulish-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\FontAwesome-Regular.ttf" />
+    <EmbeddedResource Include="Fonts\FontAwesome-Solid.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-Black.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-Bold.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-ExtraBold.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-ExtraLight.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-Light.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-Medium.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-Regular.ttf" />
+    <EmbeddedResource Include="Fonts\Mulish-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
     <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.7.0" />
     <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
@@ -24,7 +57,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Controls\SignInControl.xaml.cs">
+      <DependentUpon>SignInControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Controls\SignUpControl.xaml.cs">
+      <DependentUpon>SignUpControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Controls\SignInControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Controls\SignUpControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ServiceTestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SignInPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

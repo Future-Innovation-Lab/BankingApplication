@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="BankingAppMobile.Views.Controls.SignUpControl">
+    <StackLayout>
+        <StackLayout
+            Margin="20, 0"
+            Spacing="5">
+            <Label
+                Text="Email"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Frame
+                x:Name="EmailFrame"
+                Style="{StaticResource Base_FrameEntry}">
+                <Entry
+                    Placeholder="Enter your email"
+                    Text="{Binding Email.Value}"
+                    Style="{StaticResource Base_Entry}">
+                    <Entry.Behaviors>
+                        <xct:UserStoppedTypingBehavior
+							Command="{Binding ValidateCommand}"
+							CommandParameter="email"
+                            StoppedTypingTimeThreshold="50"
+                            ShouldDismissKeyboardAutomatically="False"/>
+                    </Entry.Behaviors>
+                    <Entry.Triggers>
+                        <DataTrigger 
+							TargetType="Entry"
+							Binding="{Binding Email.IsValid}"
+							Value="False">
+                            <Setter TargetName="EmailFrame" Property="Frame.BorderColor" Value="{StaticResource FailColor}" />
+                            <Setter TargetName="SignupButton" Property="Button.IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Entry.Triggers>
+                    <Entry.Effects>
+                        <xct:RemoveBorderEffect></xct:RemoveBorderEffect>
+                    </Entry.Effects>
+                </Entry>
+            </Frame>
+            <Label
+                IsVisible="{Binding Email.IsValid, Converter={xct:InvertedBoolConverter}}"
+				Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+				TextColor="{StaticResource FailColor}" />
+        </StackLayout>
+        <StackLayout
+            Margin="20, 0"
+            Spacing="5">
+            <Label
+                Text="Pin"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Frame
+                x:Name="PinFrame"
+                Style="{StaticResource Base_FrameEntry}">
+                <Entry
+                    IsPassword="True"
+                    Placeholder="Enter your pin"
+                    Text="{Binding Pin.Value}"
+                    Style="{StaticResource Base_Entry}">
+                    <Entry.Behaviors>
+                        <xct:UserStoppedTypingBehavior
+							Command="{Binding ValidateCommand}"
+							CommandParameter="pin"
+                            StoppedTypingTimeThreshold="50"
+                            ShouldDismissKeyboardAutomatically="False"/>
+                    </Entry.Behaviors>
+                    <Entry.Triggers>
+                        <DataTrigger 
+							TargetType="Entry"
+							Binding="{Binding Pin.IsValid}"
+							Value="False">
+                            <Setter TargetName="PinFrame" Property="Frame.BorderColor" Value="{StaticResource FailColor}" />
+                            <Setter TargetName="SignupButton" Property="Button.IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Entry.Triggers>
+                    <Entry.Effects>
+                        <xct:RemoveBorderEffect></xct:RemoveBorderEffect>
+                    </Entry.Effects>
+                </Entry>
+            </Frame>
+            <Label
+                IsVisible="{Binding Pin.IsValid, Converter={xct:InvertedBoolConverter}}"
+				Text="{Binding Pin.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+				TextColor="{StaticResource FailColor}" />
+        </StackLayout>
+        <StackLayout
+            Margin="20, 0"
+            Spacing="5">
+            <Label
+                Text="Confirm Pin"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Frame
+                x:Name="ConfirmPinFrame"
+                Style="{StaticResource Base_FrameEntry}">
+                <Entry
+                    IsPassword="True"
+                    Placeholder="Confirm your pin"
+                    ReturnCommand="{Binding SignUpCommand}"
+                    Text="{Binding ConfirmPin.Value}"
+                    Style="{StaticResource Base_Entry}">
+                    <Entry.Behaviors>
+                        <xct:UserStoppedTypingBehavior
+							Command="{Binding ValidateCommand}"
+							CommandParameter="confirmPin"
+                            StoppedTypingTimeThreshold="50"
+                            ShouldDismissKeyboardAutomatically="False"/>
+                    </Entry.Behaviors>
+                    <Entry.Triggers>
+                        <DataTrigger 
+							TargetType="Entry"
+							Binding="{Binding ConfirmPin.IsValid}"
+							Value="False">
+                            <Setter TargetName="ConfirmPinFrame" Property="Frame.BorderColor" Value="{StaticResource FailColor}" />
+                            <Setter TargetName="SignupButton" Property="Button.IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Entry.Triggers>
+                    <Entry.Effects>
+                        <xct:RemoveBorderEffect></xct:RemoveBorderEffect>
+                    </Entry.Effects>
+                </Entry>
+            </Frame>
+            <Label
+                IsVisible="{Binding ConfirmPin.IsValid, Converter={xct:InvertedBoolConverter}}"
+				Text="{Binding ConfirmPin.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+				TextColor="{StaticResource FailColor}" />
+        </StackLayout>
+        <Button 
+            x:Name="SignupButton"
+            IsEnabled="False"
+            Command="{Binding SignUpCommand}"
+            Margin="20, 10, 20, 10"
+            Text="Register"
+            Style="{StaticResource Base_Button}"></Button>
+    </StackLayout>
+</ContentView>

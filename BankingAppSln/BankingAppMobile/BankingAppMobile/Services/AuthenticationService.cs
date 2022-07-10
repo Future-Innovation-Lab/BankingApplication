@@ -39,7 +39,11 @@ namespace BankingAppMobile.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine(await response.Content.ReadAsStringAsync());
+                    var contentResponse = await response.Content.ReadAsStringAsync();
+
+                    var valueResponse = JsonConvert.DeserializeObject<bool>(contentResponse);
+
+                    return valueResponse;
                 }
 
                 }
