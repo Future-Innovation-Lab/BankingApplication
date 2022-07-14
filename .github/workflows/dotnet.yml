@@ -10,7 +10,7 @@ jobs:
   build:
     defaults:
       run:
-        working-directory: /BankingAppSln/BankingAppWebApi/
+        working-directory: ./BankingAppSln/BankingAppWebApi/
 
     runs-on: ubuntu-latest
 
