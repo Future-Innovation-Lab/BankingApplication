@@ -34,8 +34,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: |
-          dotnet build --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/bankingapp' 
+          dotnet build --configuration Debug
+          dotnet publish -c Debug -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/bankingapp' 
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
       with: 
