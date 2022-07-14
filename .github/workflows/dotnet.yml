@@ -6,11 +6,20 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  AZURE_WEBAPP_NAME: futureinnovbankingapp
+  AZURE_WEBAPP_WORKING_PATH: './BankingAppSln/BankingAppWebApi/'     
+  AZURE_RESOURCEGROUP_NAME: futureinnovbankingjhbrg 
+  SQLSERVER_NAME: ${{ secrets.SQL_SERVERNAME  }}                        
+  DATABASE_NAME: ${{ secrets.SQL_DBNAME  }}                  
+  SQLADMIN_LOGIN: ${{ secrets.SQLADMIN_LOGIN  }}                
+  SQLADMIN_PASS: ${{ secrets.SQLADMIN_PASS  }}                
+
 jobs:
   build:
     defaults:
       run:
-        working-directory: ./BankingAppSln/BankingAppWebApi/
+        working-directory: '${{ env.AZURE_WEBAPP_WORKING_PATH }}
 
     runs-on: ubuntu-latest
 
@@ -23,6 +32,16 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: |
+          dotnet build --configuration Release
+          dotnet publish -c Release -o bankingapp 
+   
+ 
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: ${{ env.AZURE_WEBAPP_NAME }} 
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} 
+          package: '${{ env.AZURE_WEBAPP_WORKING_PATH }}/bankingapp'
+          slot-name: staging  
+          
