@@ -9,7 +9,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: futureinnovbankingapp
   AZURE_WEBAPP_WORKING_PATH: './BankingAppSln/BankingAppWebApi'     
-  AZURE_WEBAPP_PACKAGE_PATH: '.' 
+  AZURE_WEBAPP_PACKAGE_PATH: './BankingAppSln/BankingAppWebApi/bankingapp' 
   AZURE_RESOURCEGROUP_NAME: futureinnovbankingjhbrg 
   SQLSERVER_NAME: ${{ secrets.SQL_SERVERNAME  }}                        
   DATABASE_NAME: ${{ secrets.SQL_DBNAME  }}                  
@@ -41,7 +41,7 @@ jobs:
       with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} 
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} 
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/bankingapp'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
           slot-name: staging  
     - name: Login for az cli commands 
       uses: azure/login@v1
