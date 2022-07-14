@@ -18,8 +18,8 @@ env:
 jobs:
   build:
     defaults:
-      run:
-        working-directory: '${{ env.AZURE_WEBAPP_WORKING_PATH }}
+      run:   
+        working-directory: '${{ env.AZURE_WEBAPP_WORKING_PATH }}'
 
     runs-on: ubuntu-latest
 
