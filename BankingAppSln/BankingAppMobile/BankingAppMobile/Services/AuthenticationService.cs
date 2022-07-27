@@ -22,7 +22,7 @@ namespace BankingAppMobile.Services
         }
 
 
-        public async Task<bool> Authenticate(string userName, string pin)
+        public async Task<AuthResponse> Authenticate(string userName, string pin)
         {
                 Uri uri = new Uri(_config.BankingServerUrl+ "api/Authentication");
 
@@ -41,7 +41,7 @@ namespace BankingAppMobile.Services
                 {
                     var contentResponse = await response.Content.ReadAsStringAsync();
 
-                    var valueResponse = JsonConvert.DeserializeObject<bool>(contentResponse);
+                    var valueResponse = JsonConvert.DeserializeObject<AuthResponse>(contentResponse);
 
                     return valueResponse;
                 }
@@ -52,7 +52,7 @@ namespace BankingAppMobile.Services
                     Debug.WriteLine(@"\tERROR {0}", ex.Message);
                 }
 
-            return false;            
+            return new AuthResponse();            
             }
     }
 }

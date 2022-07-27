@@ -20,10 +20,30 @@ namespace BankingAppWebApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] AuthRequest auth)
         {
+            var authResponse = new AuthResponse();
+            
             try
             {
                 var result = _bankingDbRepository.PerformAuthenticationCheck(auth.UserName, auth.Pin);
-                return Ok(result);
+
+                if (result)
+                { 
+                    var authentication = _bankingDbRepository.GetAuthentication(auth.UserName, auth.Pin);
+                
+                    if (authentication != null)
+                    {
+                        var customer = _bankingDbRepository.GetCustomerByAuthenticationId(authentication.AuthenticationId);
+
+                        if (customer != null)
+                        {
+                            authResponse.Authenticated = true;
+                            authResponse.AuthenticatedCustomer = customer;
+                        }
+                    }
+                    
+                }
+                
+                return Ok(authResponse);
             }
             catch (Exception ex)
             {

@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F75202
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{B8997B30-7987-4FF5-A3E8-E1F38642F137}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingShared", "BankingShared\BankingShared.csproj", "{88CB5CF7-FF5C-42FB-87D0-DAD338E472A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingShared", "BankingShared\BankingShared.csproj", "{88CB5CF7-FF5C-42FB-87D0-DAD338E472A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

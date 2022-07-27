@@ -117,13 +117,31 @@ namespace BankingAppWebApi.Data
         }
     }
 
+        public Customer GetCustomerByAuthenticationId(int authenticationId, bool fullFetch = true)
+        {
+            if (fullFetch)
+            {
 
-        #endregion
+                var customer = _bankingContext.Customers.Where(x => x.AuthenticationId == authenticationId).Include(x => x.BankAccounts).FirstOrDefault();
+                return customer;
+            }
+
+            else
+            {
+                var customer = _bankingContext.Customers.Where(x => x.AuthenticationId == authenticationId).FirstOrDefault();
+                return customer;
+
+            }
+        }
 
 
-        #region BankAccount
 
-        public BankAccount CreateNewBankAccount(BankAccount bankAccount)
+            #endregion
+
+
+            #region BankAccount
+
+            public BankAccount CreateNewBankAccount(BankAccount bankAccount)
         {
             _bankingContext.BankAccounts.Add(bankAccount);
             _bankingContext.SaveChanges();
@@ -232,6 +250,14 @@ namespace BankingAppWebApi.Data
             }
 
             return false;
+        }
+
+        public Authentication GetAuthentication(string userName, string pin)
+        {
+            var user = _bankingContext.Authentications.Where(u => u.EmailAddress == userName && u.Pin == pin).FirstOrDefault();
+
+           
+            return user;
         }
 
         #endregion

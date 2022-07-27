@@ -21,6 +21,8 @@ namespace BankingAppMobile.ViewModels
         private IDialogService _dialogService;
         private IEventAggregator _eventAggregator;
 
+        private IDataCache _dataCache;
+
         private ValidatableObject<string> _email;
         public ValidatableObject<string> Email
         {
@@ -48,15 +50,19 @@ namespace BankingAppMobile.ViewModels
                 MainState = LayoutState.Loading;
                 if (ValidateLoginData())
                 {
-                    var user = await _authenticationService.Authenticate(Email.Value, Pin.Value);
+                    var authResponse = await _authenticationService.Authenticate(Email.Value, Pin.Value);
 
-                    if (user)
+                    if (authResponse.Authenticated)
                     {
                         ClearAuthData();
 
 
                         // TODO set login state
-                        
+
+                        _dataCache.IsAuthenticated = true;
+                        _dataCache.AuthenticatedCustomer = authResponse.AuthenticatedCustomer;
+
+
                         await NavigationService.NavigateAsync("myapp:///NavigationPage/HomePage");
 
                     }
@@ -116,12 +122,14 @@ namespace BankingAppMobile.ViewModels
         }
 
         public SignInPageViewModel(INavigationService navigationService, IDialogService dialogService,
-            IEventAggregator eventAggregator, IAuthentication authentication) : base(navigationService)
+            IEventAggregator eventAggregator, IAuthentication authentication, IDataCache dataCache) : base(navigationService)
         {
             _dialogService = dialogService;
             _eventAggregator = eventAggregator;
 
             _authenticationService = authentication;
+
+            _dataCache = dataCache;
 
             AddValidations();
 

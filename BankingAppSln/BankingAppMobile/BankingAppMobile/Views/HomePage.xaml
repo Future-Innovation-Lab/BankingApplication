@@ -3,6 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="BankingAppMobile.Views.HomePage">
-  
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:controls="clr-namespace:BankingAppMobile.Views.Controls"
+             x:Class="BankingAppMobile.Views.HomePage" Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"
+            xct:StateLayout.CurrentState="{Binding MainState}"
+            Padding="0, 20, 0, 0">
+            <xct:StateLayout.StateViews>
+                <xct:StateView 
+                    StateKey="Loading"
+                    VerticalOptions="FillAndExpand">
+                    <controls:LoadingView></controls:LoadingView>
+                </xct:StateView>
+            </xct:StateLayout.StateViews>
+            <Grid
+                ColumnDefinitions="Auto, Auto"
+                Margin="20, 0, 0, 10"
+                HorizontalOptions="Start">
+                <Label
+                    Grid.Column="1"
+                    Text="{Binding WelcomeMessage}"
+                    Style="{StaticResource Headline4_MulishBlack}"
+                    Margin="10, 0, 0, 0"
+                    VerticalOptions="Center"></Label>
+            </Grid>
+
+
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

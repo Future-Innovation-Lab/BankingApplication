@@ -44,6 +44,8 @@ namespace BankingAppMobile
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
             containerRegistry.Register<IAuthentication, AuthenticationService> ();
 
+            containerRegistry.RegisterSingleton<IDataCache, InMemoryDataCache>();
+
             containerRegistry.Register<IAppConfiguration, AppConfigurationService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
